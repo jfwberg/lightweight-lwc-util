@@ -1,0 +1,26 @@
+<template>
+    <lightning-card icon-name="standard:sales_value" variant="base" title="CodeMirror Testing Utility">
+
+        <div slot="actions">
+            <div class="slds-grid slds-gutters">
+                <div class="slds-col">
+                    <c-cm-mode-picklist variant="" value={codemirrorMode} onvaluechange={handleModeChange}></c-cm-mode-picklist>
+                </div>
+                <div class="slds-col">
+                    <c-cm-theme-picklist variant="" value={codemirrorTheme} onvaluechange={handleThemeChange}></c-cm-theme-picklist>
+                </div>
+              </div>
+        </div>
+        
+        <c-cm-textarea
+            onloadingcomplete = {handleCodemirrorLoaded}
+            onsave            = {handleCodemirrorSave}
+            disabled          = {codemirrorDisabled}
+            value             = {codemirrorValue} 
+            theme             = {codemirrorTheme}
+            mode              = {codemirrorMode} 
+            size              = {codemirrorSize}
+            class             = "ta"
+        ></c-cm-textarea>   
+    </lightning-card>
+</template>

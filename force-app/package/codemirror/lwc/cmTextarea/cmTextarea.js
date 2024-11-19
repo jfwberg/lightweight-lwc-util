@@ -17,6 +17,8 @@ export default class CodeMirrorTextArea extends LightningElement {
     // Indicator if the loading has completed and the component is added in the DOM
     loaded = false;
 
+    focus = 0;
+
     // Default values
     _theme		= 'default';
     _mode		= 'application/javascript';
@@ -243,7 +245,7 @@ export default class CodeMirrorTextArea extends LightningElement {
                     foldGutter       : true,
                     gutters          : ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
                     continueComments : true,
-                    readOnly         : this._disabled,
+                    readOnly         : true,
                     extraKeys        : {
                         "F11": function(cm) {
                             cm.setOption("fullScreen", !cm.getOption("fullScreen"));
@@ -261,6 +263,22 @@ export default class CodeMirrorTextArea extends LightningElement {
 
                 // Set loaded to true
                 this.loaded = true;
+
+                // Set a focus function to prevent some weird text deletion bug
+                this.cm.on('focus', () => {
+                    if(this.focus !=1){
+                        this.focus=1;
+                        this.cm.setOption('readOnly',false);
+                    }  
+                });
+                
+                // Same focus bug, compromise is you need to select twice
+                this.cm.on('blur', () => {
+                    if(this.focus !=0){
+                        this.focus=0;
+                        this.cm.setOption('readOnly', true);
+                    }  
+                });
 
                 // Initially you have to set the default values as the editor does not yet exists, so API value has to be set afer render
                 // Note: the loaded variable needs to be set to true to render the editor first

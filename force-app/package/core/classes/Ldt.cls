@@ -15,10 +15,10 @@ global with sharing class Ldt {
     /** **************************************************************************************************** **
      **                                           GLOBAL VARIABLES                                           **
      ** **************************************************************************************************** **/
-    @AuraEnabled global String  keyField = 'Id';
-    @AuraEnabled global Boolean hideCheckboxColumn = true;
-    @AuraEnabled global Boolean showRowNumberColumn= false;
-    @AuraEnabled global Col[]   columns = new Col[]{};
+    @AuraEnabled global String  keyField              = 'Id';
+    @AuraEnabled global Boolean hideCheckboxColumn    = true;
+    @AuraEnabled global Boolean showRowNumberColumn   = false;
+    @AuraEnabled global Col[]   columns               = new Col[]{};
     @AuraEnabled global List<Map<String,Object>> data = new List<Map<String,Object>>();
 
 
@@ -70,7 +70,7 @@ global with sharing class Ldt {
      ** **************************************************************************************************** **/
     /**
      * @description Method that serialize the class to a string and removes 
-     *              the "_x" from the variables named "class" (reserverd key word)
+     *              the "_x" from the variables named "class" (reserved key word)
      */
     global String toJSON(){
         return JSON.serialize(this,true).replaceAll('_x', '');

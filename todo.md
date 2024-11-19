@@ -1,0 +1,1 @@
+- Validate is the unlocked package is actually a locked package
