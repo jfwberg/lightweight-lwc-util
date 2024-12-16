@@ -18,6 +18,7 @@ global with sharing class Ldt {
     @AuraEnabled global String  keyField              = 'Id';
     @AuraEnabled global Boolean hideCheckboxColumn    = true;
     @AuraEnabled global Boolean showRowNumberColumn   = false;
+    @AuraEnabled global Integer wrapTextMaxLines      = 5;
     @AuraEnabled global Col[]   columns               = new Col[]{};
     @AuraEnabled global List<Map<String,Object>> data = new List<Map<String,Object>>();
 
@@ -91,6 +92,11 @@ global with sharing class Ldt {
     
     global Ldt setShowRowNumberColumn(Boolean showRowNumberColumn){
         this.showRowNumberColumn = showRowNumberColumn;
+        return this;
+    }
+
+    global Ldt setWrapTextMaxLines(Integer wrapTextMaxLines){
+        this.wrapTextMaxLines = wrapTextMaxLines;
         return this;
     }
 
@@ -247,7 +253,12 @@ global with sharing class Ldt {
         global Col setTypeAttributes(TypeAttributes typeAttributes){
             this.typeAttributes = typeAttributes;
             return this;
-        } 
+        }
+        
+        global Col setWrapText(Boolean wrapText){
+            this.wrapText = wrapText;
+            return this;
+        }
     }
 
 

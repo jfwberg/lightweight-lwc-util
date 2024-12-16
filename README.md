@@ -8,9 +8,9 @@ https://medium.com/@justusvandenberg/create-lightning-web-component-datatable-co
 | Info | Value |
 |---|---|
 |Name|Lightweight - LWC Util|
-|Version|0.7.0-2|
-|Managed Installation URL | */packaging/installPackage.apexp?p0=04tP3000000t8rNIAQ* |
-|Unlocked Installation URL| */packaging/installPackage.apexp?p0=04tP3000000t94HIAQ* |
+|Version|0.8.0-1|
+|Managed Installation URL | */packaging/installPackage.apexp?p0=04tP3000000wL0rIAE* |
+|Unlocked Installation URL| */packaging/installPackage.apexp?p0=04tP3000000wL2TIAU* |
 
 # Javascript Functions
 ## Utility functions
@@ -239,6 +239,7 @@ For data time values see the formatted documentation https://developer.salesforc
     columns                 = {ldt.columns}
     hide-checkbox-column    = {ldt.hideCheckboxColumn}
     show-row-number-column  = {ldt.showRowNumberColumn}
+    wrap-text-max-lines     = {ldt.wrapTextMaxLines}
     onrowaction             = {handleRowAction}
 ></utl-extended-datatable>
 ```
@@ -312,6 +313,7 @@ public static utl.Ldt getTable(){
 |``` setKeyField(String keyField)```                        | utl.Ldt  | Setter for the keyField variable|
 |``` setHideCheckboxColumn(Boolean hideCheckboxColumn)```   | utl.Ldt  | Setter for the hideCheckboxColumn variable|
 |``` setShowRowNumberColumn(Boolean showRowNumberColumn)``` | utl.Ldt  | Setter for the showRowNumberColumn variable|
+|``` setWrapTextMaxLines(Integer numLines)```               | utl.Ldt  | Setter for the wrapTextMaxLines variable. This truncates the wrapped text after a set number of lines|
 |``` addColumn(utl.Ldt.Col col)```                          | utl.Ldt  | Method to add a column object to the table. See the details on the *utl.Ldt.Col* class below |
 |``` setData(List<Map<String,Object>> data)```              | utl.Ldt  | Method to set the full data variable at once|
 |``` addRow(Map<String,Object> row)```                      | utl.Ldt  | Method to add a single row of data|
@@ -339,6 +341,7 @@ public static utl.Ldt getTable(){
 |```setLabel(String label)```                              | utl.Ldt.Col | Setter for label variable
 |```setSortable(Boolean sortable)```                       | utl.Ldt.Col | Setter for sortable variable
 |```setType(String type)```                                | utl.Ldt.Col | Setter for type variable
+|```setWrapText(Boolean wrapText)```                       | utl.Ldt.Col | Setter for wrapText variable, when set to true, text wraps instead of truncating
 |```setTypeAttributes(TypeAttributes typeAttributes)```    | utl.Ldt.Col | Method to add type attributes to a column. See the details on the *utl.Ldt.TypeAttributes* class below
 
 

@@ -25,6 +25,7 @@ private with sharing class LdtTest {
             .setKeyField('Id')
             .setHideCheckboxColumn(false)
             .setShowRowNumberColumn(true)
+            .setWrapTextMaxLines(25)
             .addColumn(new Ldt.Col('Label', 'Field_Name'))
             .setData(
                 new List<Map<String,Object>>{
@@ -71,6 +72,7 @@ private with sharing class LdtTest {
             .setSortable(false)
             .setType('action')
             .setTypeAttributes(new Ldt.TypeAttributes())
+            .setWrapText(true)
         ;
         
         // Test Exception

@@ -1,0 +1,30 @@
+<template>
+    <!-- SPINNER -->
+    <div class="slds-is-relative">
+        <lightning-spinner alternative-text="Loading" size="medium" if:true={loading} ></lightning-spinner>
+    </div>
+
+    <!-- CARD -->
+    <lightning-card icon-name="standard:sales_value" variant="base" title="Lightning Data Table - Testing Utility">
+        
+        <lightning-button-group lwc:if={loaded} slot="actions">
+            <lightning-button                             alternative-text="New"     label="New"     onclick={handleClickNew}></lightning-button>
+            <lightning-button  disabled={buttonsDisabled} alternative-text="Refresh" label="Refresh" onclick={handleClickRefresh}></lightning-button>
+        </lightning-button-group>
+
+        <div lwc:if={loaded}>
+            <hr class="hr" />
+            <c-extended-datatable
+                lwc:if                  = {loaded}
+                key-field               = {ldt.keyField} 
+                data                    = {ldt.data} 
+                columns                 = {ldt.columns}
+                hide-checkbox-column    = {ldt.hideCheckboxColumn}
+                show-row-number-column  = {ldt.showRowNumberColumn}
+                onrowaction             = {handleRowAction}
+                wrap-text-max-lines     = {ldt.wrapTextMaxLines}
+            ></c-extended-datatable>
+        </div>
+        
+    </lightning-card>
+</template>
