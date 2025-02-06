@@ -79,7 +79,10 @@ private with sharing class LdtTest {
         try{
             col.setType('Invalid Column Type');
         }catch(Exception e){
-            Assert.areEqual(Ldt.INVALID_COLUMN_TYPE_MSG, e.getMessage(), 'Unexpected Exception message');
+            Assert.areEqual(
+                String.format(Ldt.INVALID_COLUMN_TYPE_MSG, new String[]{'Invalid Column Type'}),
+                e.getMessage()
+            );
         }
 
         // Constructor with custom type

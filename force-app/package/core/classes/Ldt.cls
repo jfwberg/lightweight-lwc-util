@@ -39,7 +39,7 @@ global with sharing class Ldt {
     };
 
     // (Error) messages
-    @TestVisible private static final String INVALID_COLUMN_TYPE_MSG = 'Invalid column type';
+    @TestVisible private static final String INVALID_COLUMN_TYPE_MSG = 'Invalid column type: "{0}"';
 
 
     /** **************************************************************************************************** **
@@ -243,10 +243,10 @@ global with sharing class Ldt {
             if(!(new Set<String>{   'action','boolean','button','button-icon','currency','date','date-local',
                                     'email','location','number','percent','phone','text','url',
                                     'salesforceLogoIcon','userIcon'
-            }).contains(type)){
-                throw new StringException(INVALID_COLUMN_TYPE_MSG);
+            }).contains(type?.toLowerCase())){
+                throw new StringException(String.format(INVALID_COLUMN_TYPE_MSG, new String[]{type}));
             }
-            this.type = type;
+            this.type = type?.toLowerCase();
             return this;
         }
 
